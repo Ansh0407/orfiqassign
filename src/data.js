@@ -1,4 +1,4 @@
-// Sample file data to use in the application
+
 export const files = [
   { title: "Course Files", files: 5, access: "Owner", created: "Mar 20, 2024", edited: "Apr 5, 2024", color: "text-yellow-400" },
   { title: "QRFIQ Notes", files: 5, access: "Owner", created: "Mar 21, 2024", edited: "Apr 5, 2024", color: "text-yellow-300" },
