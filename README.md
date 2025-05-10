@@ -156,4 +156,4 @@ To start the application, run:
 npm run dev
 ```
 
-This will launch the application on [http://localhost:3000]( http://localhost:5173/)
+This will launch the application on [http://localhost:5173]( http://localhost:5173/)
