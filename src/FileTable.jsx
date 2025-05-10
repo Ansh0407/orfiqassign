@@ -1,10 +1,20 @@
 import React from "react";
-import { MoreVertical, Folder, FileText, File, FileCode, Image, Music, Video, FileArchive } from "lucide-react";
+import {
+  MoreVertical,
+  Folder,
+  FileText,
+  File,
+  FileCode,
+  Image,
+  Music,
+  Video,
+  FileArchive,
+} from "lucide-react";
 
 const FileTable = ({ files }) => {
   const getFileIcon = (file) => {
     const type = file.type?.toLowerCase() || "folder";
-    
+
     switch (type) {
       case "folder":
         return <Folder className={`w-5 h-5 ${file.color || "text-blue-500"}`} />;
@@ -28,8 +38,8 @@ const FileTable = ({ files }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-0 mt-2">
-      <table className="min-w-full">
+    <div className="bg-white rounded-lg shadow mt-2 overflow-x-auto">
+      <table className="min-w-[850px] w-full">
         <thead>
           <tr className="text-left text-gray-500 text-sm border-b">
             <th className="py-3 px-8 font-medium">Title</th>
@@ -43,17 +53,17 @@ const FileTable = ({ files }) => {
         <tbody>
           {files.map((file, idx) => (
             <tr key={idx} className="border-b hover:bg-gray-50 group">
-              <td className="py-3 px-8 flex items-center gap-2">
+              <td className="py-3 px-8 flex items-center gap-2 whitespace-nowrap">
                 {getFileIcon(file)}
                 <span>{file.title}</span>
                 {file.shared && (
                   <span className="ml-2 text-xs text-gray-400">(Shared)</span>
                 )}
               </td>
-              <td className="py-3 px-4 text-gray-600">
+              <td className="py-3 px-4 text-gray-600 whitespace-nowrap">
                 {file.type === "folder" ? `${file.files} Files` : file.size || "-"}
               </td>
-              <td className="py-3 px-4 text-gray-600">
+              <td className="py-3 px-4 text-gray-600 whitespace-nowrap">
                 {file.access?.includes("Shared") ? (
                   <span>
                     Shared by{" "}
@@ -65,9 +75,13 @@ const FileTable = ({ files }) => {
                   file.access
                 )}
               </td>
-              <td className="py-3 px-4 text-gray-600">{file.created}</td>
-              <td className="py-3 px-4 text-gray-600">{file.edited}</td>
-              <td className="py-3 px-4">
+              <td className="py-3 px-4 text-gray-600 whitespace-nowrap">
+                {file.created}
+              </td>
+              <td className="py-3 px-4 text-gray-600 whitespace-nowrap">
+                {file.edited}
+              </td>
+              <td className="py-3 px-4 whitespace-nowrap">
                 <MoreVertical className="text-gray-400 cursor-pointer w-5 h-5 group-hover:text-gray-700" />
               </td>
             </tr>

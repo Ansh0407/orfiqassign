@@ -14,45 +14,33 @@ const FileExplorer = () => {
 
   useEffect(() => {
     const sortedFiles = [...filesData];
+    const parseDate = (str) => new Date(str.replace(/(\w{3}) (\d+), (\d{4})/, "$2 $1 $3"));
 
-    switch (sortOption) {
-      case "name":
-        sortedFiles.sort((a, b) => a.title.localeCompare(b.title));
-        break;
-      case "edited":
-        sortedFiles.sort((a, b) => {
-          const dateA = new Date(a.edited.replace(/(\w{3}) (\d+), (\d{4})/, "$2 $1 $3"));
-          const dateB = new Date(b.edited.replace(/(\w{3}) (\d+), (\d{4})/, "$2 $1 $3"));
-          return dateB - dateA;
-        });
-        break;
-      case "created":
-        sortedFiles.sort((a, b) => {
-          const dateA = new Date(a.created.replace(/(\w{3}) (\d+), (\d{4})/, "$2 $1 $3"));
-          const dateB = new Date(b.created.replace(/(\w{3}) (\d+), (\d{4})/, "$2 $1 $3"));
-          return dateB - dateA;
-        });
-        break;
-      default:
-        break;
+    if (sortOption === "name") {
+      sortedFiles.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+      sortedFiles.sort((a, b) => parseDate(b[sortOption]) - parseDate(a[sortOption]));
     }
 
     setFiles(sortedFiles);
   }, [sortOption]);
 
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden bg-gray-50">
       <Sidebar />
-      
-      <div className="flex-1 flex flex-col px-4">
+
+      <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
-        
-        <div className="flex justify-between items-center my-4">
-          <AddNewMenu />
-          <StorageBar />
-        </div>
-        
-        <div className="flex-1 overflow-auto">
+
+        {/* Top action bar */}
+        <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-2">
+  <AddNewMenu />
+  <StorageBar />
+</div>
+
+
+        {/* Main file content */}
+        <div className="flex-1 overflow-auto px-4 pb-4">
           {viewMode === "table" ? (
             <FileTable files={files} />
           ) : (
