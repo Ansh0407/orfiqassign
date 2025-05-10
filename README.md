@@ -47,28 +47,6 @@ module.exports = {
 }
 ```
 
-Update `src/index.css`:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-```
-
 ## Step 3: Implementation
 
 ### Create AppContext.jsx
@@ -175,7 +153,7 @@ useEffect(() => {
 To start the application, run:
 
 ```bash
-npm start
+npm run dev
 ```
 
-This will launch the application on [http://localhost:3000](http://localhost:3000).
+This will launch the application on [http://localhost:3000]( http://localhost:5173/)
