@@ -5,8 +5,8 @@ import FileTable from "./FileTable";
 import GridView from "./GridView";
 import filesData from "./data";
 import StorageBar from "./StorageBar";
-import AddNewMenu from "./AddNewMenu";
-import Sidebar from "./Sidebar";
+import AddNewMenu from "./AddnewMenu";
+import Sidebar from "./SideBar";
 
 const FileExplorer = () => {
   const [files, setFiles] = useState(filesData);
